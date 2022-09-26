@@ -14,6 +14,10 @@ class InventoryViewModel(private val itemDao: ItemDao) : ViewModel() {
         }
     }
 
+    fun retrieveItem(id: Int): LiveData<Item> {
+        return itemDao.getItem(id).asLiveData()
+    }
+
     private fun getNewItemEntry(itemName: String, itemPrice: String, itemCount: String): Item {
         return Item(
             itemName = itemName,
